@@ -2,11 +2,16 @@ package com.reditt.service;
 
 
 import com.reditt.domain.SubmitTopicRequest;
+import com.reditt.domain.Topic;
+import com.reditt.domain.VoteTopicRequest;
+import com.reditt.domain.VoteType;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by Ashish Gupta on 01/06/17.
@@ -19,10 +24,27 @@ public class TopicController {
     @Resource
     private TopicService topicService;
 
-    @RequestMapping(value = "/list", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/submit", method = RequestMethod.POST, produces = "application/json")
     public long submitTopic(SubmitTopicRequest request) {
         return topicService.submitTopic(request);
     }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public Topic getTopicById(@PathVariable Long id) {
+        return topicService.getTopic(id);
+    }
+
+    @RequestMapping(value = "/{id}/vote", method = RequestMethod.POST)
+    public void voteTopic(@PathVariable Long id, VoteTopicRequest request ) {
+        topicService.voteTopic(id, request);
+    }
+
+
+    @RequestMapping(value = "/top", method = RequestMethod.GET)
+    public List<Topic> getTopTopics() {
+        return topicService.getTopTopics();
+    }
+
 }
 
 

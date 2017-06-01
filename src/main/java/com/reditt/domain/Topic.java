@@ -23,6 +23,14 @@ public class Topic {
         this.id = id;
     }
 
+    public void upvote() {
+        upVotes++;
+    }
+
+    public void downvote() {
+        downVotes++;
+    }
+
     public long getUpVotes() {
         return upVotes;
     }
