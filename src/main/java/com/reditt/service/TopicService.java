@@ -3,7 +3,6 @@ package com.reditt.service;
 import com.reditt.domain.SubmitTopicRequest;
 import com.reditt.domain.Topic;
 import com.reditt.domain.VoteTopicRequest;
-import com.reditt.domain.VoteType;
 
 import java.util.List;
 

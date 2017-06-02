@@ -1,16 +1,17 @@
-package com.reditt.service;
+package com.reditt.rest;
 
 
 import com.reditt.domain.SubmitTopicRequest;
 import com.reditt.domain.Topic;
 import com.reditt.domain.VoteTopicRequest;
-import com.reditt.domain.VoteType;
+import com.reditt.service.TopicService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -25,7 +26,7 @@ public class TopicController {
     private TopicService topicService;
 
     @RequestMapping(value = "/submit", method = RequestMethod.POST, produces = "application/json")
-    public long submitTopic(SubmitTopicRequest request) {
+    public long submitTopic(@Valid SubmitTopicRequest request) {
         return topicService.submitTopic(request);
     }
 
@@ -46,7 +47,6 @@ public class TopicController {
     }
 
 }
-
 
 
 

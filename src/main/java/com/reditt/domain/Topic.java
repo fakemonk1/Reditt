@@ -1,5 +1,7 @@
 package com.reditt.domain;
 
+import java.util.Objects;
+
 /**
  * Created by Ashish Gupta on 01/06/17.
  */
@@ -53,5 +55,18 @@ public class Topic {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Topic topic = (Topic) o;
+        return Objects.equals(id, topic.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
